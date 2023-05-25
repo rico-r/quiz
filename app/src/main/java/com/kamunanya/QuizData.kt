@@ -7,14 +7,16 @@ data class QuizData(var id: Long=0, var title: String, var desc: String, var que
     private lateinit var shuffledQuestion: List<QuestionData>
 
     fun shuffleAnswer() {
-        val avail = (0..(question.size - 1)).toMutableList()
-        val questionList = MutableList<QuestionData>(question.size) { QuestionData("", "",  listOf<String>()) }
+        val avail = question.indices.toMutableList()
+        val questionList = MutableList<QuestionData>(question.size) {
+            QuestionData("", "",  listOf<String>())
+        }
         for(q in question) {
-            val selected = (0..question.size - 1).random()
+            val selected = question.indices.random()
             val selectedValue = avail.removeAt(selected)
             questionList[selectedValue] = question[selectedValue]
         }
-//        this.answerList = answerList
+        this.shuffledQuestion = questionList
     }
 
     fun getShuffledQustion(): List<QuestionData> {

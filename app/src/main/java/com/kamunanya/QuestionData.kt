@@ -6,12 +6,12 @@ data class QuestionData(val question:String, val ans: String, var alt: List<Stri
 
     fun shuffleAnswer() {
         val avail = (0..alt.size).toMutableList()
-        val answerList = MutableList<String>(alt.size + 1) { "" }
-        correctAnswerIndex = (0..(avail.size - 1)).random()
+        val answerList = MutableList(alt.size + 1) { "" }
+        correctAnswerIndex = (0 until avail.size).random()
         avail.removeAt(correctAnswerIndex)
         answerList[correctAnswerIndex] = ans
         for(alternateAnswer in alt) {
-            val selected = (0..avail.size - 1).random()
+            val selected = (0 until avail.size).random()
             val selectedValue = avail.removeAt(selected)
             answerList[selectedValue] = alternateAnswer
         }
