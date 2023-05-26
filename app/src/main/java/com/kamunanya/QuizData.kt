@@ -4,30 +4,22 @@ import com.google.gson.Gson
 
 data class QuizData(var id: Long=0, var title: String, var desc: String, var question: List<QuestionData>) {
 
-    private lateinit var shuffledQuestion: List<QuestionData>
-
-    fun shuffleAnswer() {
+    fun shuffle(): ShuffledQuizData {
         val avail = question.indices.toMutableList()
-        val questionList = MutableList<QuestionData>(question.size) {
-            QuestionData("", "",  listOf<String>())
+        val questionList = MutableList(question.size) {
+            ShuffledQuestionData("", -1,  listOf())
         }
         for(q in question) {
-            val selected = question.indices.random()
+            val selected = avail.indices.random()
             val selectedValue = avail.removeAt(selected)
-            questionList[selectedValue] = question[selectedValue]
+            questionList[selectedValue] = question[selectedValue].shuffle()
         }
-        this.shuffledQuestion = questionList
-    }
-
-    fun getShuffledQustion(): List<QuestionData> {
-        return shuffledQuestion
+        return ShuffledQuizData(title, desc, questionList)
     }
 
     fun asJson(): String {
         return Gson().toJson(this)
     }
-
-    fun toUri() {}
 
     companion object {
         fun fromJson(json: String): QuizData {
@@ -35,3 +27,9 @@ data class QuizData(var id: Long=0, var title: String, var desc: String, var que
         }
     }
 }
+
+data class ShuffledQuizData(
+    val title: String,
+    val desc: String,
+    val question: List<ShuffledQuestionData>
+)

@@ -1,28 +1,29 @@
 package com.kamunanya
 
-data class QuestionData(val question:String, val ans: String, var alt: List<String>) {
-    private lateinit var answerList: List<String>
-    private var correctAnswerIndex: Int = -1
+data class QuestionData(
+        val question:String,
+        val ans: String,
+        val alt: List<String>
+) {
 
-    fun shuffleAnswer() {
+    fun shuffle(): ShuffledQuestionData {
         val avail = (0..alt.size).toMutableList()
-        val answerList = MutableList(alt.size + 1) { "" }
-        correctAnswerIndex = (0 until avail.size).random()
+        val answers = MutableList(alt.size + 1) { "" }
+        val correctAnswerIndex = (0 until avail.size).random()
         avail.removeAt(correctAnswerIndex)
-        answerList[correctAnswerIndex] = ans
+        answers[correctAnswerIndex] = ans
         for(alternateAnswer in alt) {
             val selected = (0 until avail.size).random()
             val selectedValue = avail.removeAt(selected)
-            answerList[selectedValue] = alternateAnswer
+            answers[selectedValue] = alternateAnswer
         }
-        this.answerList = answerList
+        return ShuffledQuestionData(question, correctAnswerIndex, answers)
     }
 
-    fun getShuffledAnswer(): List<String> {
-        return answerList
-    }
-
-    fun getCorrectAnswerIndex(): Int {
-        return correctAnswerIndex
-    }
 }
+
+data class ShuffledQuestionData(
+        val question:String,
+        val correctAnswerIndex: Int,
+        val answer: List<String>
+)
