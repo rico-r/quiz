@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.kamunanya.databinding.ActivityQuizBinding
+import timber.log.Timber
 
 class QuizActivity : AppCompatActivity() {
     lateinit var conf: AppBarConfiguration
@@ -15,11 +16,16 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityQuizBinding>(this, R.layout.activity_quiz)
         val navController = this.findNavController(R.id.quizNavHostFragment)
-        val qid = intent.getLongExtra("qid", -1L)
-        var quiz = if(qid == -1L)
-            QuizData(-1L, "", "", mutableListOf())
-        else QuizDB.getInstance(this).get(qid)
-        val args = StartQuizFragmentArgs.Builder(quiz.asJson()).build()
+        var quiz: QuizData? = null
+        if(intent.data != null) {
+            quiz = QuizData.fromUri(requireNotNull(intent.data))
+        } else {
+            val qid = intent.getLongExtra("qid", -1L)
+            var quiz = if (qid == -1L)
+                QuizData(-1L, "", "", mutableListOf())
+            else QuizDB.getInstance(this).get(qid)
+        }
+        val args = StartQuizFragmentArgs.Builder(requireNotNull(quiz).asJson()).build()
 
         conf = AppBarConfiguration.Builder()
             .setFallbackOnNavigateUpListener {
