@@ -16,23 +16,22 @@ class MainFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
     lateinit var adapter: QuizItemAdapter
     lateinit var quizzes: List<QuizData>
+    var selectedQuizIndex = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        quizzes = listOf(
-            QuizData(0, "Judul 1", "Deskripsi 1", listOf<QuestionData>()),
-            QuizData(0, "Judul 2", "Deskripsi 2", listOf<QuestionData>()),
-            QuizData(0, "Judul 3", "Deskripsi 3", listOf<QuestionData>()),
-        )
+        val db = QuizDB.getInstance(requireContext())
+        quizzes = db.getAll()
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.editQuizButton.isEnabled = false
         binding.startQuizButton.isEnabled = false
 
+        binding.createQuizButton.setOnClickListener { startEditActivity(-1) }
         binding.startQuizButton.setOnClickListener { startQuizActivity() }
-        binding.editQuizButton.setOnClickListener { startEditActivity() }
+        binding.editQuizButton.setOnClickListener { startEditActivity(quizzes[adapter.selectedIndex].id) }
 
         val recyclerView = binding.recyclerView
         adapter = QuizItemAdapter(quizzes)
@@ -41,7 +40,7 @@ class MainFragment : Fragment() {
         adapter.setOnItemClickListener{
             binding.editQuizButton.isEnabled = true
             binding.startQuizButton.isEnabled = true
-            Toast.makeText(context, "item ${adapter.selectedIndex} clicked", Toast.LENGTH_SHORT)
+            selectedQuizIndex = adapter.selectedIndex
         }
 
         // Add divider to list item
@@ -54,15 +53,18 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    private fun startEditActivity() {
-        val intent = Intent(requireContext(), QuizActivity::class.java)
+    private fun startEditActivity(quizId: Long) {
+        val intent = Intent(requireContext(), EditActivity::class.java)
         val data = Bundle()
-        data.putLong("qid", quizzes[adapter.selectedIndex].id)
-        startActivity(intent)
+        data.putLong("qid", quizId)
+        startActivity(intent, data)
     }
 
     private fun startQuizActivity() {
-        TODO("Not yet implemented")
+        val intent = Intent(requireContext(), QuizActivity::class.java)
+        val data = Bundle()
+        data.putLong("qid", quizzes[adapter.selectedIndex].id)
+        startActivity(intent, data)
     }
 
 }

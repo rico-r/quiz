@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:text="Edit"
+            android:text="Mainkan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/editQuizButton"
             app:layout_constraintEnd_toEndOf="parent"/>

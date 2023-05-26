@@ -79,17 +79,17 @@ class QuizDB private constructor(context: Context) :
         const val COLUMN_ID = "id"
         const val COLUMN_DATA = "data"
 
-        val SQL_CREATE_ENTRIES =
+        const val SQL_CREATE_ENTRIES =
             "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY,$COLUMN_DATA BLOB)"
 
-        val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS $TABLE_NAME"
+        const val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS $TABLE_NAME"
 
-        private lateinit var db: QuizDB
+        private var db: QuizDB? = null
         fun getInstance(ctx: Context): QuizDB {
             if (db == null) {
                 db = QuizDB(ctx)
             }
-            return db
+            return db as QuizDB
         }
     }
 }
