@@ -13,37 +13,50 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:text="Buat"
+            android:textColor="#000000"
+            app:backgroundTint="#ffc532"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/editQuizButton"/>
+            app:layout_constraintEnd_toStartOf="@id/editQuizButton"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <Button
             android:id="@+id/editQuizButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:text="Edit"
+            android:textColor="#000000"
+            app:backgroundTint="#FFC532"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/createQuizButton"
-            app:layout_constraintEnd_toStartOf="@id/startQuizButton"/>
+            app:layout_constraintEnd_toStartOf="@id/startQuizButton"
+            app:layout_constraintStart_toEndOf="@+id/createQuizButton" />
+
         <Button
             android:id="@+id/startQuizButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:text="Mainkan"
+            android:textColor="#000000"
+            app:backgroundTint="#FFC532"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editQuizButton"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editQuizButton" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="0dp"
+            android:layout_width="269dp"
             android:layout_height="0dp"
+            android:paddingStart="0dp"
+            android:paddingTop="30dp"
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/createQuizButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="4"
+            tools:listitem="@layout/quiz_item" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
