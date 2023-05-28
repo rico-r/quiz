@@ -7,10 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/border_layout"
+        android:background="@drawable/border"
         android:clickable="true"
         android:focusable="true"
-
         android:orientation="vertical">
 
         <TextView
@@ -20,18 +19,11 @@
             android:layout_margin="5dp"
             android:textColor="#4D8BA4"
             android:textSize="24sp"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Quiz Title" />
+            tools:text="Quiz Title"
+            android:fontFamily="@font/font_family"/>
 
-        <TextView
-            android:id="@+id/quizDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quizTitle"
-            tools:text="Description" />
     </LinearLayout>
 </layout>
