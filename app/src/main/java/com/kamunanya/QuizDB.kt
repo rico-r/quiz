@@ -36,19 +36,22 @@ class QuizDB private constructor(context: Context) :
         val cursor = readableDatabase.query(TABLE_NAME, projection, null, null, null, null, null)
         val result = mutableListOf<QuizData>()
         while (cursor.moveToNext()) {
-            result.add(QuizData.fromJson(cursor.getString(1)))
+            val data = QuizData.fromJson(cursor.getString(1))
+            data.id = cursor.getLong(0)
+            result.add(data)
         }
         return result
     }
 
-    fun get(id: Int): QuizData {
+    fun get(id: Long): QuizData {
         val cursor = readableDatabase.query(
             TABLE_NAME, arrayOf(COLUMN_DATA),
             "$COLUMN_ID=?", arrayOf(id.toString()),
             null, null, null)
-        val result = mutableListOf<QuizData>()
         if(cursor.moveToNext()) {
-            result.add(QuizData.fromJson(cursor.getString(1)))
+            val result = QuizData.fromJson(cursor.getString(0))
+            result.id = id
+            return result
         }
         throw Error("Quiz with id $id not found")
     }

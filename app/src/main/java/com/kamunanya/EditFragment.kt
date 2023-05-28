@@ -1,17 +1,82 @@
 package com.kamunanya
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.kamunanya.databinding.FragmentEditBinding
 
 class EditFragment : Fragment() {
+    var quizId = -1L
+    lateinit var questions: MutableList<QuestionData>
+    lateinit var binding: FragmentEditBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_edit, container, false)
+        binding = FragmentEditBinding.inflate(inflater, container, false)
+        val args = EditFragmentArgs.fromBundle(requireArguments())
+        val quiz = QuizData.fromJson(args.data)
+        quizId = quiz.id
+        binding.judulKuis.setText(quiz.title)
+        binding.deskripsiKuis.setText(quiz.desc)
+        questions = quiz.question
+        binding.createQuizButton.setOnClickListener {
+            findNavController()
+                .navigate(EditFragmentDirections
+                    .actionEditFragmentToEditQuestionFragment(-1, getData().asJson()))
+        }
+
+        setHasOptionsMenu(true)
+        return binding.root
     }
 
+    fun getData(): QuizData {
+        return QuizData(
+            quizId,
+            binding.judulKuis.text.toString(),
+            binding.deskripsiKuis.text.toString(),
+            questions)
+    }
+
+    fun save() {
+        if(quizId == -1L) {
+            // Create new
+            QuizDB.getInstance(requireContext()).create(getData())
+        } else {
+            // Update existing
+            QuizDB.getInstance(requireContext()).update(getData())
+        }
+        Toast.makeText(requireContext(), resources.getText(R.string.saved), Toast.LENGTH_SHORT).show()
+        findNavController().navigateUp()
+    }
+
+    fun validate() {
+        var errorMsg: String? = null
+        if(binding.judulKuis.text.isEmpty()) {
+            errorMsg = resources.getString(R.string.error_title_empty)
+            binding.judulKuis.findFocus()
+        } else if(binding.deskripsiKuis.text.isEmpty()) {
+            errorMsg = resources.getString(R.string.error_desc_empty)
+            binding.deskripsiKuis.findFocus()
+        } else {
+            save()
+            return
+        }
+        Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_edit_quiz, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.save -> validate()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

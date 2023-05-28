@@ -5,16 +5,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        tools:context=".EditQuestionFragment"
         android:orientation="vertical"
-        tools:context=".EditFragment"
         android:gravity="center">
 
         <TextView
-            android:id="@+id/judul"
+            android:id="@+id/pertanyaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Judul Kuis :"
+            android:text="Pertanyaan :"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
             android:layout_marginStart="16dp"
@@ -23,13 +23,11 @@
             android:fontFamily="@font/font_family"/>
 
         <EditText
-            android:id="@+id/judulKuis"
+            android:id="@+id/isi_pertanyaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Judul"
             android:inputType="text"
             android:minHeight="48dp"
-            android:paddingStart="10dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
@@ -38,10 +36,10 @@
             android:background="@drawable/border_edit"/>
 
         <TextView
-            android:id="@+id/Deskripsi"
+            android:id="@+id/jawaban"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deskripsi Kuis :"
+            android:text="Jawaban :"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
             android:layout_marginStart="16dp"
@@ -50,31 +48,70 @@
             android:fontFamily="@font/font_family"/>
 
         <EditText
-            android:id="@+id/deskripsiKuis"
+            android:id="@+id/isi_jawaban"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Deskripsi"
-            android:gravity="top"
             android:inputType="text"
-            android:minHeight="150dp"
-            android:paddingStart="10dp"
+            android:minHeight="48dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/font_family"
-            android:background="@drawable/border_edit"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:background="@drawable/border_edit"/>
+
+        <TextView
+            android:id="@+id/pilihan_lain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="0dp"
-            android:paddingTop="30dp"
-            android:scrollbars="vertical"
-            app:layoutManager="LinearLayoutManager"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_soal" />
+            android:text="Pilihan Lain :"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="16dp"
+            android:fontFamily="@font/font_family"/>
+
+        <EditText
+            android:id="@+id/pilihan1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/font_family"
+            android:background="@drawable/border_edit"/>
+
+
+        <EditText
+            android:id="@+id/pilihan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/font_family"
+            android:background="@drawable/border_edit"/>
+
+
+        <EditText
+            android:id="@+id/pilihan3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/font_family"
+            android:background="@drawable/border_edit"/>
 
         <Button
             android:id="@+id/createQuizButton"
@@ -88,5 +125,6 @@
             app:backgroundTint="#ffc532"
             android:fontFamily="@font/font_family"
             />
+
     </LinearLayout>
 </layout>

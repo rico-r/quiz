@@ -9,5 +9,29 @@
         android:id="@+id/editFragment"
         android:name="com.kamunanya.EditFragment"
         android:label="EditFragment"
-        tools:layout="@layout/fragment_edit"/>
+        tools:layout="@layout/fragment_edit">
+        <action
+            android:id="@+id/action_editFragment_to_editQuestionFragment"
+            app:destination="@id/editQuestionFragment" />
+        <argument
+            android:name="data"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editQuestionFragment"
+        android:name="com.kamunanya.EditQuestionFragment"
+        android:label="fragment_edit_question"
+        tools:layout="@layout/fragment_edit_question" >
+        <action
+            android:id="@+id/action_editQuestionFragment_to_editFragment"
+            app:destination="@id/editFragment"
+            app:popUpTo="@id/edit_navigation"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="index"
+            app:argType="integer" />
+        <argument
+            android:name="data"
+            app:argType="string" />
+    </fragment>
 </navigation>

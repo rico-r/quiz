@@ -2,7 +2,7 @@ package com.kamunanya
 
 import com.google.gson.Gson
 
-data class QuizData(var id: Long=0, var title: String, var desc: String, var question: List<QuestionData>) {
+data class QuizData(var id: Long=0, var title: String, var desc: String, var question: MutableList<QuestionData>) {
 
     fun shuffle(): ShuffledQuizData {
         val avail = question.indices.toMutableList()

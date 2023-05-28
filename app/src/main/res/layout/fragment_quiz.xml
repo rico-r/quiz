@@ -10,13 +10,18 @@
         android:orientation="vertical"
         android:gravity="center">
 
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="342dp"
-            android:layout_height="380dp"
-            app:srcCompat="@drawable/bertanya" />
-
+        <TextView
+            android:id="@+id/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="237dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/font_family"
+            android:padding="10dp"
+            android:background="@drawable/border_quiz"
+            android:text="Soal" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -26,15 +31,15 @@
             android:paddingTop="30dp"
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"
-            tools:itemCount="1"
-            tools:listitem="@layout/start_quiz" />
+            tools:itemCount="4"
+            tools:listitem="@layout/item_pilihan" />
 
         <Button
             android:id="@+id/createQuizButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Mulai"
+            android:text="Tambah Soal"
             android:background="@drawable/item_soalborder"
             android:textColor="#000000"
             android:gravity="center"

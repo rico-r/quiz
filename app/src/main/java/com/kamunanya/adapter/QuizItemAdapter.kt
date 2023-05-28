@@ -11,7 +11,7 @@ import com.kamunanya.R
 import com.kamunanya.databinding.QuizItemBinding
 
 class QuizItemAdapter (
-    private val dataset: List<QuizData>
+    var dataset: List<QuizData>
 ) : RecyclerView.Adapter<QuizItemAdapter.ItemViewHolder>() {
     var selectedIndex: Int = -1
     lateinit var selectedItem: ItemViewHolder
@@ -24,7 +24,6 @@ class QuizItemAdapter (
     class ItemViewHolder(private val binding: QuizItemBinding): RecyclerView.ViewHolder(binding.root) {
         val root = binding.root
         val quizTitle = binding.quizTitle
-        val quizDesc = binding.quizDesc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -36,12 +35,11 @@ class QuizItemAdapter (
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.quizTitle.text = item.title
-        holder.quizDesc.text = item.desc
         holder.root.setOnClickListener{
             if(selectedIndex != -1) {
-                selectedItem.root.setBackgroundResource(R.drawable.custom_ripple)
+                selectedItem.root.isSelected = false
             }
-            it.setBackgroundResource(R.color.purple_200)
+            it.isSelected = true
             selectedIndex = position
             selectedItem = holder
             mClickListener?.onClick(it)

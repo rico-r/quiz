@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Kamu Nanya?</string>
+    <string name="save">Simpan</string>
+    <string name="saved">Tersimpan!</string>
+    <string name="error_title_empty">Judul kuis tidak boleh kosong</string>
+    <string name="error_desc_empty">Deskripsi kuis tidak boleh kosong</string>
 </resources>
