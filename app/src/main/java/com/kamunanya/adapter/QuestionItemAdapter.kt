@@ -18,12 +18,14 @@ class QuestionItemAdapter(
 
     interface OnItemClickListener {
         fun onClickEdit(index: Int)
+        fun onClickDelete(index: Int)
     }
 
     class ItemViewHolder(private val binding: ItemSoalBinding): RecyclerView.ViewHolder(binding.root) {
         val root = binding.root
         val question = binding.myTextView
-        val editButton = binding.myButton
+        val editButton = binding.editButton
+        val deleteButton = binding.deleteButton
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -37,6 +39,9 @@ class QuestionItemAdapter(
         holder.question.text = item.question
         holder.editButton.setOnClickListener{
             mClickListener?.onClickEdit(position)
+        }
+        holder.deleteButton.setOnClickListener{
+            mClickListener?.onClickDelete(position)
         }
     }
 

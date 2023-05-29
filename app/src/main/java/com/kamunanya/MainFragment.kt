@@ -1,5 +1,7 @@
 package com.kamunanya
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,13 +27,14 @@ class MainFragment : Fragment() {
         binding.createQuizButton.setOnClickListener { startEditActivity(-1) }
         binding.startQuizButton.setOnClickListener { startQuizActivity() }
         binding.editQuizButton.setOnClickListener { startEditActivity(quizzes[adapter.selectedIndex].id) }
+        binding.deleteButton.setOnClickListener { confirmDelete() }
 
         val recyclerView = binding.recyclerView
         adapter = QuizItemAdapter(listOf())
-        recyclerView.adapter = adapter
 
         adapter.setOnItemClickListener{
             binding.editQuizButton.isEnabled = true
+            binding.deleteButton.isEnabled = true
             binding.startQuizButton.isEnabled = true
             selectedQuizIndex = adapter.selectedIndex
         }
@@ -41,13 +44,32 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        reloadList()
+        setAppTitle(this, resources.getString(R.string.app_name))
+    }
+
+    private fun reloadList() {
         quizzes = QuizDB.getInstance(requireContext()).getAll()
         selectedQuizIndex = -1
         adapter.dataset = quizzes
         binding.recyclerView.adapter = adapter
         binding.editQuizButton.isEnabled = false
+        binding.deleteButton.isEnabled = false
         binding.startQuizButton.isEnabled = false
-        setAppTitle(this, resources.getString(R.string.app_name))
+    }
+
+    private fun confirmDelete() {
+        val quiz = quizzes[adapter.selectedIndex]
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.confirm_delete_title)
+            .setMessage(resources.getString(R.string.confirm_delete_content, quiz.title))
+            .setPositiveButton(R.string.yes) { dialog: DialogInterface, id: Int ->
+                QuizDB.getInstance(requireContext()).delete(quiz)
+                reloadList()
+            }
+            .setNegativeButton(R.string.no, null)
+            .create()
+            .show()
     }
 
     private fun startEditActivity(quizId: Long) {

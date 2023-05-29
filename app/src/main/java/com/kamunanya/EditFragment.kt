@@ -1,5 +1,7 @@
 package com.kamunanya
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -29,19 +31,37 @@ class EditFragment : Fragment(), QuestionItemAdapter.OnItemClickListener {
                 .navigate(EditFragmentDirections
                     .actionEditFragmentToEditQuestionFragment(-1, getData().asJson()))
         }
-        val adapter = QuestionItemAdapter(questions)
-        adapter.setOnItemClickListener(this)
-        binding.recyclerView.adapter = adapter
+        reloadQuestionList()
 
         setHasOptionsMenu(true)
         setAppTitle(this, resources.getString(R.string.title_edit_quiz))
         return binding.root
     }
 
+    private fun reloadQuestionList() {
+        val adapter = QuestionItemAdapter(questions)
+        adapter.setOnItemClickListener(this)
+        binding.recyclerView.adapter = adapter
+    }
+
     override fun onClickEdit(index: Int) {
         findNavController()
             .navigate(EditFragmentDirections
                 .actionEditFragmentToEditQuestionFragment(index, getData().asJson()))
+    }
+
+    override fun onClickDelete(index: Int) {
+        val question = questions[index]
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.confirm_delete_title)
+            .setMessage(resources.getString(R.string.confirm_delete_content, question.question))
+            .setPositiveButton(R.string.yes) { dialog: DialogInterface, id: Int ->
+                questions.removeAt(index)
+                reloadQuestionList()
+            }
+            .setNegativeButton(R.string.no, null)
+            .create()
+            .show()
     }
 
     fun getData(): QuizData {

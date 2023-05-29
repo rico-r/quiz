@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/item_soalborder"
@@ -19,23 +19,39 @@
             android:id="@+id/myTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             tools:text="Soal"
             android:textColor="#000000"
-            android:gravity="center"
             android:padding="13dp"
             android:fontFamily="@font/font_family"/>
 
         <Button
-            android:id="@+id/myButton"
+            android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:text="@string/edit"
             android:textAllCaps="false"
+            android:layout_marginEnd="5dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:textColor="#ffffff"
+            app:backgroundTint="#4d8ba4"
+            android:fontFamily="@font/font_family"/>
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="5dp"
             android:layout_marginEnd="14dp"
             android:textColor="#ffffff"
             app:backgroundTint="#4d8ba4"
             android:fontFamily="@font/font_family"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

@@ -11,7 +11,7 @@
             android:id="@+id/createQuizButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/create"
             android:textAllCaps="false"
             android:textColor="#000000"
@@ -25,21 +25,35 @@
             android:id="@+id/editQuizButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/edit"
             android:textAllCaps="false"
             android:textColor="#000000"
             app:backgroundTint="@drawable/bg_btn"
             android:fontFamily="@font/font_family"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/startQuizButton"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
             app:layout_constraintStart_toEndOf="@+id/createQuizButton" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            app:backgroundTint="@drawable/bg_btn"
+            android:fontFamily="@font/font_family"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/startQuizButton"
+            app:layout_constraintStart_toEndOf="@+id/editQuizButton" />
 
         <Button
             android:id="@+id/startQuizButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/start"
             android:textAllCaps="false"
             android:textColor="#000000"
@@ -47,7 +61,7 @@
             android:fontFamily="@font/font_family"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editQuizButton" />
+            app:layout_constraintStart_toEndOf="@+id/deleteButton" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
