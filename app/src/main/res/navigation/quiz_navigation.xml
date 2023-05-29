@@ -9,5 +9,42 @@
         android:id="@+id/startQuizFragment"
         android:name="com.kamunanya.StartQuizFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_start_quiz"/>
+        tools:layout="@layout/fragment_start_quiz">
+        <action
+            android:id="@+id/action_startQuizFragment_to_quizFragment"
+            app:destination="@id/quizFragment"/>
+        <argument android:name="quizData"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.kamunanya.QuizFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_quiz">
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/startQuizFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="quizData"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.kamunanya.ResultFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_startQuizFragment"
+            app:destination="@id/startQuizFragment"
+            app:popUpTo="@id/startQuizFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="quizData"
+            app:argType="string" />
+        <argument
+            android:name="correctCount"
+            app:argType="integer" />
+    </fragment>
 </navigation>

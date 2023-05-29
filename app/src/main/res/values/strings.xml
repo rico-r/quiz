@@ -9,4 +9,11 @@
     <string name="error_alt1_empty">Pilihan 1 tidak boleh kosong</string>
     <string name="error_alt2_empty">Pilihan 2 tidak boleh kosong</string>
     <string name="error_alt3_empty">Pilihan 3 tidak boleh kosong</string>
+    <string name="title_edit_quiz">Edit Kuis</string>
+    <string name="title_edit_question">Edit Pertanyaan</string>
+    <string name="question_index">Pertanyaan %d/%d</string>
+    <string name="quiz_result1">Yahh, kamu menjawab benar %d dari %d soal</string>
+    <string name="quiz_result2">Hmmm, kamu menjawab benar %d dari %d soal</string>
+    <string name="quiz_result3">Hebat, kamu menjawab benar %d dari %d soal</string>
+    <string name="quiz_result4">Horeee, kamu menjawab benar %d dari %d soal</string>
 </resources>
