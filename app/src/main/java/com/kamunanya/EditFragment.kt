@@ -5,9 +5,10 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.kamunanya.adapter.QuestionItemAdapter
 import com.kamunanya.databinding.FragmentEditBinding
 
-class EditFragment : Fragment() {
+class EditFragment : Fragment(), QuestionItemAdapter.OnItemClickListener {
     var quizId = -1L
     lateinit var questions: MutableList<QuestionData>
     lateinit var binding: FragmentEditBinding
@@ -28,9 +29,18 @@ class EditFragment : Fragment() {
                 .navigate(EditFragmentDirections
                     .actionEditFragmentToEditQuestionFragment(-1, getData().asJson()))
         }
+        val adapter = QuestionItemAdapter(questions)
+        adapter.setOnItemClickListener(this)
+        binding.recyclerView.adapter = adapter
 
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onClickEdit(index: Int) {
+        findNavController()
+            .navigate(EditFragmentDirections
+                .actionEditFragmentToEditQuestionFragment(index, getData().asJson()))
     }
 
     fun getData(): QuizData {
