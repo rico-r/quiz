@@ -34,6 +34,7 @@ class EditFragment : Fragment(), QuestionItemAdapter.OnItemClickListener {
         binding.recyclerView.adapter = adapter
 
         setHasOptionsMenu(true)
+        setAppTitle(this, resources.getString(R.string.title_edit_quiz))
         return binding.root
     }
 

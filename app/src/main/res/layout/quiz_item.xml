@@ -10,6 +10,8 @@
         android:background="@drawable/border"
         android:clickable="true"
         android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <TextView

@@ -68,10 +68,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Mulai"
+            android:textAllCaps="false"
             android:background="@drawable/item_soalborder"
             android:textColor="#000000"
             android:gravity="center"
-            app:backgroundTint="#ffc532"
+            app:backgroundTint="@drawable/bg_btn"
             android:fontFamily="@font/font_family"
             />
     </LinearLayout>

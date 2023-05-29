@@ -58,6 +58,6 @@ class QuizFragment: Fragment() {
             }
             nextQustion()
         }
-        (activity as AppCompatActivity).supportActionBar?.title = resources.getString(R.string.question_index, quesitionIndex + 1, shuffledQuizData.question.size)
+        setAppTitle(this, resources.getString(R.string.question_index, quesitionIndex + 1, shuffledQuizData.question.size))
     }
 }

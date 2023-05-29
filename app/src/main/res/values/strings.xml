@@ -20,4 +20,17 @@
     <string name="share_quiz_text">Ayo mainkan %s:\n%s</string>
     <string name="share_result_content">Lihat hasil %s Saya</string>
     <string name="share_result_title">Bagikan hasil kuis</string>
+    <string name="add_question">Tambah Soal</string>
+    <string name="quiz_title_label">Judul Kuis :</string>
+    <string name="quiz_desc_label">Deskripsi Kuis :</string>
+    <string name="question_label">Pertanyaan :</string>
+    <string name="answer_label">Jawaban :</string>
+    <string name="other_choice_label">Pilihan Lain :</string>
+    <string name="title">Judul</string>
+    <string name="desc">Deskripsi</string>
+    <string name="edit">Edit</string>
+    <string name="create">Buat</string>
+    <string name="start">Mulai</string>
+    <string name="submit">Submit</string>
+    <string name="repeat">Ulangi</string>
 </resources>

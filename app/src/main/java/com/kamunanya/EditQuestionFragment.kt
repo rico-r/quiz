@@ -33,8 +33,9 @@ class EditQuestionFragment : Fragment() {
             binding.pilihan1.setText(question.alt[0])
             binding.pilihan2.setText(question.alt[1])
             binding.pilihan3.setText(question.alt[2])
-    }
+        }
 
+        setAppTitle(this, resources.getString(R.string.title_edit_question))
         return binding.root
     }
 

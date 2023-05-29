@@ -25,7 +25,7 @@
             android:id="@+id/action_quizFragment_to_resultFragment"
             app:destination="@id/resultFragment"
             app:popUpTo="@id/startQuizFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
         <argument
             android:name="quizData"
             app:argType="string" />

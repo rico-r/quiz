@@ -22,8 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:clickable="true"
-            android:focusable="true"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -59,11 +57,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Ulangi"
+            android:text="@string/repeat"
+            android:textAllCaps="false"
             android:background="@drawable/item_soalborder"
             android:textColor="#000000"
             android:gravity="center"
-            app:backgroundTint="#ffc532"
+            app:backgroundTint="@drawable/bg_btn"
             android:fontFamily="@font/font_family"
             />
     </LinearLayout>

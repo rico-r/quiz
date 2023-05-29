@@ -44,6 +44,7 @@ class ResultFragment: Fragment() {
                     .actionResultFragmentToStartQuizFragment(args.quizData))
         }
         setHasOptionsMenu(true)
+        setAppTitle(this, resources.getString(R.string.app_name))
         return binding.root
     }
 

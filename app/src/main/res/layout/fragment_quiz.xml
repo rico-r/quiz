@@ -21,7 +21,10 @@
             android:fontFamily="@font/font_family"
             android:padding="10dp"
             android:background="@drawable/border_quiz"
-            android:text="Soal" />
+            android:gravity="center_horizontal"
+            android:textColor="#000000"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="Soal" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -39,11 +42,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Submit"
+            android:text="@string/submit"
+            android:textAllCaps="false"
             android:background="@drawable/item_soalborder"
             android:textColor="#000000"
             android:gravity="center"
-            app:backgroundTint="#ffc532"
+            app:backgroundTint="@drawable/bg_btn"
             android:fontFamily="@font/font_family"
             />
     </LinearLayout>
