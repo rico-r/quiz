@@ -12,16 +12,11 @@ import java.util.zip.InflaterOutputStream
 data class QuizData(var id: Long=0, var title: String, var desc: String, var question: MutableList<QuestionData>) {
 
     fun shuffle(): ShuffledQuizData {
-        val avail = question.indices.toMutableList()
-        val questionList = MutableList(question.size) {
-            ShuffledQuestionData("", -1,  listOf())
+        val result = mutableListOf<ShuffledQuestionData>()
+        for(q in question.shuffled()) {
+            result.add(q.shuffle())
         }
-        for(q in question) {
-            val selected = avail.indices.random()
-            val selectedValue = avail.removeAt(selected)
-            questionList[selectedValue] = question[selectedValue].shuffle()
-        }
-        return ShuffledQuizData(title, desc, questionList)
+        return ShuffledQuizData(title, desc, result)
     }
 
     fun toUri(): Uri {

@@ -27,7 +27,7 @@
             android:id="@+id/isi_pertanyaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:minHeight="48dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="8dp"
