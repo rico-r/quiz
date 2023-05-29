@@ -16,16 +16,16 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityQuizBinding>(this, R.layout.activity_quiz)
         val navController = this.findNavController(R.id.quizNavHostFragment)
-        var quiz: QuizData? = null
+        var quiz: QuizData
         if(intent.data != null) {
             quiz = QuizData.fromUri(requireNotNull(intent.data))
         } else {
             val qid = intent.getLongExtra("qid", -1L)
-            var quiz = if (qid == -1L)
+            quiz = if (qid == -1L)
                 QuizData(-1L, "", "", mutableListOf())
             else QuizDB.getInstance(this).get(qid)
         }
-        val args = StartQuizFragmentArgs.Builder(requireNotNull(quiz).asJson()).build()
+        val args = StartQuizFragmentArgs.Builder(quiz.asJson()).build()
 
         conf = AppBarConfiguration.Builder()
             .setFallbackOnNavigateUpListener {

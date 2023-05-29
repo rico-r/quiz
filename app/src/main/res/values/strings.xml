@@ -18,4 +18,6 @@
     <string name="quiz_result4">Horeee, kamu menjawab benar %d dari %d soal</string>
     <string name="share">Bagikan</string>
     <string name="share_quiz_text">Ayo mainkan %s:\n%s</string>
+    <string name="share_result_content">Lihat hasil %s Saya</string>
+    <string name="share_result_title">Bagikan hasil kuis</string>
 </resources>
