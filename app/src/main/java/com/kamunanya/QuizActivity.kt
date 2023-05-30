@@ -7,7 +7,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.kamunanya.databinding.ActivityQuizBinding
-import timber.log.Timber
 
 class QuizActivity : AppCompatActivity() {
     lateinit var conf: AppBarConfiguration

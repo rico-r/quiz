@@ -10,7 +10,6 @@ import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kamunanya.databinding.FragmentEditQuestionBinding
-import timber.log.Timber
 
 class EditQuestionFragment : Fragment() {
     lateinit var quiz: QuizData
